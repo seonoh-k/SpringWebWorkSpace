@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+
+        <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+                <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+                <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"></property>
+                <property name="username" value="book_ex"></property>
+                <property name="password" value="book_ex"></property>
+        </bean>
+
+        <!-- HikariCP configuration -->
+        <!-- bean 태그로 스프링 컨테이너에 클래스 생성 클래스 = class 변수명 = id-->
+        <!-- HikariDataSource dataSource = new HikariDataSource(hikariConfig);와 같음 -->
+        <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+                <constructor-arg ref="hikariConfig" />
+        </bean>
+
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+                <property name="dataSource" ref="dataSource" />
+                <!-- name == 메소드명 ref == PreparedStatement -->
+        </bean>
+
+        <!-- base-package 경로에서 어노테이션 @Component를 입력한 클래스를 스프링 컨테이너에 등록 -->
+        <context:component-scan base-package="org.zerock.sample" />
+        <!-- 스프링 컨테이너에 인터페이스를 등록하면 스프링 컨테이너에서 인터페이스를 상속받는 클래스를 자동으로 생성하여 추상 메소드 사용 -->
+        <mybatis-spring:scan base-package="org.zerock.mapper" />
+
+</beans>
