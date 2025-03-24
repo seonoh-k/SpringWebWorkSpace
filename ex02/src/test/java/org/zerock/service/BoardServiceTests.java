@@ -36,4 +36,33 @@ public class BoardServiceTests {
 
         log.info("생성된 게시물 번호 : " + board.getBno());
     }
+
+    @Test
+    public void testGetList() {
+        service.getList().forEach(log::info);
+    }
+
+    @Test
+    public void testRead() {
+        log.info(service.get(9L));
+    }
+
+    @Test
+    public void testUpdate() {
+
+        BoardVO board = service.get(21L);
+
+        if(board == null) {
+            return;
+        }else {
+            board.setTitle("제목 수정");
+            log.info("modify result : " + service.modify(board));
+        }
+    }
+
+    @Test
+    public void testRemove() {
+
+        log.info(service.remove(9L));
+    }
 }

@@ -24,21 +24,34 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public BoardVO get(Long bno) {
-        return null;
+
+        log.info("get... " + bno);
+
+        return mapper.read(bno);
     }
 
     @Override
-    public boolean modify(BoardVO boardVO) {
-        return false;
+    public boolean modify(BoardVO board) {
+
+        log.info("modify..." + board);
+
+        return mapper.update(board) == 1;
     }
 
     @Override
     public boolean remove(Long bno) {
-        return false;
+
+        log.info("remove" + bno);
+
+        return mapper.delete(bno) == 1;
     }
 
     @Override
     public List<BoardVO> getList() {
-        return null;
+
+        log.info("get list..");
+
+        return mapper.getList();
+
     }
 }

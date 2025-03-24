@@ -64,7 +64,7 @@ public class BoardMapperTests {
     @Test
     public void testUpdate() {
         BoardVO bVO = new BoardVO();
-        bVO.setBno(8L);
+        bVO.setBno(21L);
         bVO.setTitle("바꾼 데이터");
         bVO.setContent("바꾼 데이터");
         bVO.setWriter("바꾼 데이터");

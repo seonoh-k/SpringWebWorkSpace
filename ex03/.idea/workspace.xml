@@ -5,30 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a66acd8-d83d-4270-acdc-28d88f809ef1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ex01/src/main/java/org/zerock/domain/SampleDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ex01/src/main/webapp/WEB-INF/views/sample/ex04.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ex01/src/main/webapp/WEB-INF/views/sample/ex05.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/catalina.policy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/catalina.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/jaspic-providers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/jaspic-providers.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/logging.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/server.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/tomcat-users.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/tomcat-users.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.smarttomcat/ex03/conf/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ex01/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ex01/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ex01/src/main/java/org/zerock/controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ex01/src/main/java/org/zerock/controller/SampleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring boot dependency.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../spring boot dependency.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +22,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2ubtEPKW5YoF4Ap2mWoe5lTaj6v" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -63,6 +40,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Smart Tomcat.Unnamed.executor": "Run",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -76,9 +54,6 @@
       <option name="catalinaBase" value="C:\Users\504호\.SmartTomcat\ex03\ex03" />
       <option name="contextPath" value="/" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="envOptions">
-        <map />
-      </option>
       <option name="extraClassPath" value="" />
       <option name="port" value="9999" />
       <option name="tomcatInfo">
