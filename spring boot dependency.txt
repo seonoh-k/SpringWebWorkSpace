@@ -174,3 +174,30 @@ root-context.xml에서 스캔이 필요함
 @Controller
 @Component
 @Repository
+
+MVC2
+/board/list        get
+/board/register  post   모든 항목   이동(/board/register.jsp) 
+/board/read      get    bno=123 
+/board/remove  post   bno          이동(/board/list.jsp)
+/board/modify   post   모든 항목   이동(/board/modify.jsp)
+
+
+리스트 페이징
+select bno,title,content from 
+(select /*+ index_desc(tbl_board pk_board) */ rownum rn,bno,title,content from tbl_board where rownum <= 10) 
+where rn > 0;
+
+
+페이지 시작번호
+페이지 끝 번호
+글의 전체개수
+
+Criteria
+현재 페이지 번호     -> pageNum
+한 페이지당 글 개수 -> amount
+
+
+실제 페이지 끝 번호
+이전 블럭가기
+다음 블럭 가기

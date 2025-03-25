@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -39,8 +40,10 @@ public class BoardServiceTests {
 
     @Test
     public void testGetList() {
-        service.getList().forEach(log::info);
+//        service.getList().forEach(log::info);
+        service.getListWithPaging(new Criteria(2, 10)).forEach(log::info);
     }
+
 
     @Test
     public void testRead() {

@@ -2,6 +2,7 @@ package org.zerock.service;
 
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 
 import java.util.List;
 
@@ -15,5 +16,9 @@ public interface BoardService {
 
     public boolean remove(Long bno);
 
-    public List<BoardVO> getList();
+    //public List<BoardVO> getList();
+
+    public List<BoardVO> getListWithPaging(Criteria cri);
+
+    public int getTotalCount(Criteria cri);
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -72,5 +73,24 @@ public class BoardMapperTests {
         mapper.update(bVO);
 
         log.info(bVO);
+    }
+
+    @Test
+    public void testgetListWithPaging() {
+        Criteria cri = new Criteria();
+        cri.setPageNum(2);
+        cri.setAmount(10);
+
+        mapper.getListWithPaging(cri).forEach(board -> log.info(board));
+
+    }
+
+    @Test
+    public void testGetTotalCount() {
+        Criteria cri = new Criteria();
+        cri.setPageNum(2);
+        cri.setAmount(10);
+
+        log.info(mapper.getTotalCount(cri));
     }
 }
