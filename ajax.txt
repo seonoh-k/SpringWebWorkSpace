@@ -1,0 +1,18 @@
+$.ajax({
+            url : './PopupCookie.jsp',
+            type : 'get',
+            data : {inactiveToday : chkVal},
+            dataType : "text",
+            success : function(resData) {
+                if (resData != '') location.reload();
+            }
+      });
+
+url - 이동할 페이지이다. 이동한 페이지에서 데이터를 처리하고 다시 현페이지로 돌아온다. 
+       필요한 경우 데이터를 전달할 수 있다.
+type - 전달 방식을 의미한다. GET/POST가 있다.
+data - 데이터 처리를 할 페이지에게 전달할 정도이다. 
+         Array 형식일 때 위와 같이 적으면 된다.
+dataType - 전달받는 인자의 형식.
+success - 데이터 처리가 성공했을 경우 해당 함수(함수가 아니어도 되는듯 하다)를 실행한다.
+            json으로 처리할 경우 데이터를 처리하는 페이지에서 전달해주는 값이 인자로 받아진다.
