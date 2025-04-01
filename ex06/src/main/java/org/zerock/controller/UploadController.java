@@ -157,7 +157,7 @@ public class UploadController {
             HttpHeaders header = new HttpHeaders();
             header.add("Contet-Type", Files.probeContentType(file.toPath()));
             result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK); //(데이터 정보, 헤더 정보, 상태값);
-
+            log.info(result);
         }catch(Exception e) {
             e.printStackTrace();
         }

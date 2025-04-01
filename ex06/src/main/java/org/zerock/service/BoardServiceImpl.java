@@ -1,12 +1,17 @@
 package org.zerock.service;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zerock.domain.BoardAttachVO;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.mapper.BoardAttachMapper;
 import org.zerock.mapper.BoardMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,12 +19,27 @@ import java.util.List;
 @Log4j
 public class BoardServiceImpl implements BoardService{
 
+    @Setter(onMethod_ = @Autowired)
     private BoardMapper mapper;
+
+    @Setter(onMethod_ = @Autowired)
+    private BoardAttachMapper attachMapper;
+
     @Override
     public void register(BoardVO board) {
 
         log.info("register..." + board);
         mapper.insertSelectKey(board);
+        log.info("attachList : " + board.getAttachList() );
+        if(board.getAttachList() == null || board.getAttachList().size() == 0) {
+            return;
+        }
+
+        board.getAttachList().forEach(attach -> {
+            log.info("board.getBno() : " + board.getBno());
+            attach.setBno(board.getBno());
+            attachMapper.insert(attach);
+        });
 
     }
 
@@ -71,5 +91,13 @@ public class BoardServiceImpl implements BoardService{
         log.info("get total count" + cri);
 
         return mapper.getTotalCount(cri);
+    }
+
+    @Override
+    public List<BoardAttachVO> getAttachList(Long bno) {
+
+        log.info("get attach bno : " + bno);
+
+        return attachMapper.findByBno(bno);
     }
 }

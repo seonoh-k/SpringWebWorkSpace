@@ -1,6 +1,7 @@
 package org.zerock.service;
 
 import org.springframework.stereotype.Service;
+import org.zerock.domain.BoardAttachVO;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 
@@ -21,4 +22,6 @@ public interface BoardService {
     public List<BoardVO> getListWithPaging(Criteria cri);
 
     public int getTotalCount(Criteria cri);
+
+    public List<BoardAttachVO> getAttachList(Long bno);
 }

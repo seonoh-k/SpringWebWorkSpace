@@ -2,14 +2,21 @@ package org.zerock.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.BoardAttachVO;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
 import org.zerock.service.BoardService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @Log4j
@@ -44,6 +51,11 @@ public class BoardController {
     public String register(BoardVO board, RedirectAttributes rttr) {
 
         log.info("board : " + board);
+
+        if(board.getAttachList() != null) {
+            board.getAttachList().forEach(log::info);
+        };
+
         service.register(board);
 
         rttr.addFlashAttribute("result", board.getBno());
@@ -60,6 +72,15 @@ public class BoardController {
 
         model.addAttribute("board", service.get(bno));
         // command 객체는 스프링 컨테이너에서 객체를 생성하고 영역 객체에 저장해 전송한다.
+    }
+
+    @GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public ResponseEntity<List<BoardAttachVO>> getAttachList(Long bno) {
+
+        log.info("getAttachList : " + bno);
+
+        return new ResponseEntity<>(service.getAttachList(bno), HttpStatus.OK);
     }
 
     @PostMapping("/modify")

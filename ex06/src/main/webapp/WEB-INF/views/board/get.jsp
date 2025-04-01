@@ -83,6 +83,26 @@
     </div>
     <!-- ./ end row -->
 </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">File Attach</div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class='uploadResult'>
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+          <!--  end panel-body -->
+        </div>
+      <!--  end panel-body -->
+    </div>
+    <!-- end panel -->
+</div>
+<!-- /.row -->
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -302,6 +322,42 @@
             operForm.find("#bno").remove();
             operForm.attr("action", "/board/list").submit();
         });
+    });
+</script>
+
+<script>
+    $(function() {
+        (function(){
+            var bno = '<c:out value="${board.bno}" />';
+
+            $.getJSON("/board/getAttachList", {bno:bno}, function(arr){
+                var str = "";
+
+                $(arr).each(function(i, attach){
+                    if(attach.fileType) {
+                        var fileCallPath =  encodeURIComponent( attach.uploadPath+ "/s_"+attach.uuid +"_"+attach.fileName);
+
+                        str += "<li data-path='" + attach.uploadPath + "'";
+                        str += "data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' data-type='" + attach.image + "'>"
+                        str += "<div>";
+                        str += "<span> " + attach.fileName + "</span>";
+                        str += "<img src='/display?fileName=" + fileCallPath + "'>";
+                        str += "</div></li>";
+                    }else {
+                        var fileCallPath =  encodeURIComponent( attach.uploadPath + "/" + attach.uuid + "_"+attach.fileName);
+                        var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
+
+                        str += "<li "
+                        str += "data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' data-type='" + attach.image + "' ><div>";
+                        str += "<span>" + attach.fileName + "</span>";
+                        str += "<img src='/resources/img/imgimg.png'>";
+                        str += "</div></li>";
+                    }
+                });
+
+                $(".uploadResult ul").html(str);
+            });
+        })();
     });
 </script>
 <%@include file="../includes/footer.jsp"%>

@@ -8,11 +8,11 @@
         insert into tbl_attach values(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno})
     </insert>
 
-    <delete id="">
+    <delete id="delete">
         delete tbl_attach where uuid = #{uuid}
     </delete>
 
-    <select id="">
+    <select id="findByBno" resultType="org.zerock.domain.BoardAttachVO">
         select * from tbl_attach where bno = #{bno}
     </select>
 </mapper>
